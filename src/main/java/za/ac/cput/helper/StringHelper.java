@@ -17,4 +17,10 @@ public class StringHelper {
         if (isEmptyOrNull(paramValue))
             throw new IllegalArgumentException(String.format("Invalid value for param: %s", paramName));
     }
+
+    public static String checkId(String id) {
+        if(isEmptyOrNull(id))
+            throw new IllegalArgumentException("invalid credentials provided");
+        return id;
+    }
 }
