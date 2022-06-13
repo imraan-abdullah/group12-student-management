@@ -4,11 +4,12 @@
 
 package za.ac.cput.domain;
 
+import javax.persistence.Embeddable;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
-
+@Embeddable
 public class Name {
     @NotNull
     @Id

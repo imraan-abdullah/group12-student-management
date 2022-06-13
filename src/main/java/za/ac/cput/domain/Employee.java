@@ -18,7 +18,7 @@ public class Employee implements Serializable {
     private String staffId;
     @NotNull
     private String email;
-    @NotNull
+    @Embedded
     private Name name;
 
     protected Employee() {}
