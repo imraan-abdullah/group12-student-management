@@ -20,11 +20,6 @@ public class NameFactory {
 
         return new Name.Builder().firstName(firstName).middleName(middleName).lastName(lastName).build();
     }
-//
-//        public static Name.Builder.firstname build(Name name){
-//            return new Name.Builder.firstname(name.getFirstName());
-//
-//
-//        }
-    }
+
+}
 

@@ -4,22 +4,22 @@
 
 package za.ac.cput.domain;
 
+import javax.persistence.Embeddable;
+import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
-
+@Embeddable
 public class Name {
     @NotNull
-    @Id
     private String firstName;
     @NotNull
     private String middleName;
     @NotNull
     private String lastName;
 
-    protected Name() {
-    }
+    protected Name() {}
 
     private Name(Builder builder) {
         this.firstName = builder.firstName;
@@ -39,6 +39,14 @@ public class Name {
     public String getLastName() {
         return lastName;
     }
+
+    public void setFirstName(String firstName) {this.firstName = firstName;}
+
+    public void setMiddleName(String middleName) {this.middleName = middleName;}
+
+    public void setLastName(String lastName) {this.lastName = lastName;}
+
+
     @Override
     public String toString() {
         return "Builder{" +
@@ -77,15 +85,7 @@ public class Name {
         public Name build() {
             return new Name(this);
         }
-//
-////        public static class firstname{
-////            private String firstName;
-////
-////            public firstname(String firstName){
-////                this.firstName = firstName;
-////            }
-//
-//        }
+
 
         @Override
         public boolean equals(Object o) {
