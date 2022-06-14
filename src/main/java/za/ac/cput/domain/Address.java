@@ -9,8 +9,8 @@ import java.util.Objects;
  * Author: Thina Mzosindiso Nontwabaza (219189153)
  * Date: 11 June 2022
  */
-@Embeddable
-public class Address extends City {
+@Entity
+public class Address {
     @NotNull private String streetNumber;       //Required
     @NotNull private String streetName;         //Required
     @NotNull private int postalCode;            //Required
