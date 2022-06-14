@@ -1,4 +1,7 @@
 package za.ac.cput.domain;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 import java.util.Objects;
 /***
  * Address.java
@@ -6,14 +9,18 @@ import java.util.Objects;
  * Author: Thina Mzosindiso Nontwabaza (219189153)
  * Date: 11 June 2022
  */
+@Embeddable
+public class Address extends City {
+    @NotNull private String streetNumber;       //Required
+    @NotNull private String streetName;         //Required
+    @NotNull private int postalCode;            //Required
+    private String unitNumber;                  //Optional
+    private String complexName;                 //Optional
+    @ManyToOne @Id private City city;           //Required
 
-public class Address {
-    private String streetNumber;       //Required
-    private String streetName;         //Required
-    private int postalCode;            //Required
-    private String unitNumber;         //Optional
-    private String complexName;        //Optional
-    private City city;                 //Required
+    protected Address(){
+
+    }
 
     //Constructor
     public Address(Builder builder){

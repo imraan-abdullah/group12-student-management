@@ -11,15 +11,15 @@ import za.ac.cput.domain.City;
  */
 
 public class AddressFactory {
-    public static Address build(String streetNumber, String streetName, int postalCode, String city) {
+    public static Address build(String streetNumber, String streetName, int postalCode, City city) {
         StringHelper.checkStringParam("streetNumber", streetNumber);
         StringHelper.checkStringParam("streetName", streetName);
-        StringHelper.checkStringParam("city", city);
+        StringHelper.setEmptyIfNull("");
 
         return new Address.Builder().setStreetNumber(streetNumber)
                 .setStreetName(streetName)
                 .setPostalCode(postalCode)
-                //.setCity(city)
+                .setCity(city)
                 .build();
     }
 

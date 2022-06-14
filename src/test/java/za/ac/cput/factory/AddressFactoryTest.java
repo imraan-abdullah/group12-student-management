@@ -1,6 +1,7 @@
 package za.ac.cput.factory;
 import org.junit.jupiter.api.Test;
 import za.ac.cput.domain.Address;
+import za.ac.cput.domain.City;
 import za.ac.cput.factory.AddressFactory;
 
 
@@ -16,7 +17,7 @@ class AddressFactoryTest {
 
     @Test
     public void testAddress(){
-        Address address = AddressFactory.build("12", "Adderley", 8987, "city");
+        Address address = AddressFactory.build("12", "Adderley", 8987, new City());
         System.out.println(address);
         assertNotNull(address);
 
