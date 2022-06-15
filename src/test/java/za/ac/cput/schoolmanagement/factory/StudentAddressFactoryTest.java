@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class StudentAddressFactoryTest {
 
     @Test public void build() {
-        StudentAddress studentAddress = StudentAddressFactory.build("", "");
+        StudentAddress studentAddress = StudentAddressFactory.build("218191669", "70 Malukazi");
         System.out.println(studentAddress);
         assertNotNull(studentAddress);
     }

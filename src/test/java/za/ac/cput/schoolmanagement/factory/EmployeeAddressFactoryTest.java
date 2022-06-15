@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class EmployeeAddressFactoryTest {
 
     @Test public void build() {
-        EmployeeAddress employeeAddress = EmployeeAddressFactory.build("", "");
+        EmployeeAddress employeeAddress = EmployeeAddressFactory.build("32172635", "60 Caledon");
         System.out.println(employeeAddress);
         assertNotNull(employeeAddress);
     }
