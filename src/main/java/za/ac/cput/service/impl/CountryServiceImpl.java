@@ -1,4 +1,4 @@
-package za.ac.cput.service;
+package za.ac.cput.service.impl;
 //Mariam Gallie- 219094837
 // CountryServiceImpl.java (service package)
 // 13 June 2022
@@ -6,12 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import za.ac.cput.domain.Country;
 import za.ac.cput.repository.ICountryRepository;
+import za.ac.cput.service.ICountryService;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class CountryServiceImpl implements ICountryService{
+public class CountryServiceImpl implements ICountryService {
     private final ICountryRepository repository;
 
    @Autowired public CountryServiceImpl(ICountryRepository repository){

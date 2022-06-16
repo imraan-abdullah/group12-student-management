@@ -1,5 +1,10 @@
 package za.ac.cput.factory;
-
+/***
+ * CityFactory.java
+ * Factory for City
+ * Author: Imraan Abdullah (219361738)
+ * Date: 12 June 2022
+ */
 import za.ac.cput.domain.City;
 import za.ac.cput.domain.Country;
 import za.ac.cput.helper.StringHelper;
