@@ -1,5 +1,10 @@
 package za.ac.cput.service;
-
+/***
+ * ICityService.java
+ * Service interface for City
+ * Author: Imraan Abdullah (219361738)
+ * Date: 16 June 2022
+ */
 import za.ac.cput.domain.City;
 import za.ac.cput.domain.Country;
 

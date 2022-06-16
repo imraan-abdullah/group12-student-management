@@ -1,5 +1,10 @@
 package za.ac.cput.domain;
-
+/***
+ * Country.java
+ * Entity for Country
+ * Author: Imraan Abdullah (219361738)
+ * Date: 12 June 2022
+ */
 import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.Id;

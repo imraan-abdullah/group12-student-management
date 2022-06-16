@@ -1,5 +1,11 @@
 package za.ac.cput.service.impl;
-
+/***
+ * CityServiceImpl.java
+ * Service implementation for City
+ * Author: Imraan Abdullah (219361738)
+ * Date: 16 June 2022
+ */
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import za.ac.cput.domain.City;
 import za.ac.cput.domain.Country;
@@ -13,7 +19,7 @@ import java.util.Optional;
 public class CityServiceImpl implements ICityService {
     private final ICityRepository repository;
 
-    public CityServiceImpl(ICityRepository repository) {
+    @Autowired public CityServiceImpl(ICityRepository repository) {
         this.repository = repository;
     }
 

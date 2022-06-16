@@ -1,21 +1,31 @@
 package za.ac.cput.domain;
+/***
+ * City.java
+ * Entity for City
+ * Author: Imraan Abdullah (219361738)
+ * Date: 12 June 2022
+ */
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 
-import javax.persistence.Embeddable;
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Objects;
 
+import static javax.persistence.CascadeType.MERGE;
+import static javax.persistence.CascadeType.PERSIST;
+
 @Entity
-//@Embeddable
 public class City implements Serializable {
     @NotNull @Id
     private String id;
+
     @NotNull
     private String name;
-    @Embedded
+
+    @ManyToOne(cascade = {PERSIST, MERGE})
+    @NotFound(action = NotFoundAction.IGNORE)
     private Country country;
 
     protected City() {
