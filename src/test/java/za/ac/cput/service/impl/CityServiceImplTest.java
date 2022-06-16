@@ -1,9 +1,11 @@
 package za.ac.cput.service.impl;
-
-import org.junit.jupiter.api.MethodOrderer;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestMethodOrder;
+/***
+ * CityServiceImplTest.java
+ * Test case for CityService
+ * Author: Imraan Abdullah (219361738)
+ * Date: 16 June 2022
+ */
+import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import za.ac.cput.domain.City;
@@ -20,8 +22,8 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class CityServiceImplTest {
-    private final Country country = CountryFactory.build("test-country-id", "test-country-name");
-    private final City city = CityFactory.build("tesr-city-id", "test-city-name", country);
+    private final Country country = CountryFactory.build("RSA", "South Africa");
+    private final City city = CityFactory.build("CPT", "Cape Town", country);
     @Autowired private ICityService service;
 
     @Order(1)
@@ -53,7 +55,7 @@ class CityServiceImplTest {
         System.out.println(cityList);
         assertEquals(1, cityList.size());
     }
-
+    @Order(4)
     @Test
     void delete() {
         this.service.delete(this.city);

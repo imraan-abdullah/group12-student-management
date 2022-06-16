@@ -1,5 +1,10 @@
 package za.ac.cput.factory;
-
+/***
+ * CityFactory.java
+ * test case for CityFactory
+ * Author: Imraan Abdullah (219361738)
+ * Date: 12 June 2022
+ */
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import za.ac.cput.domain.City;

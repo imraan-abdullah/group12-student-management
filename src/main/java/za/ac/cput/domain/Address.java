@@ -9,14 +9,14 @@ import java.util.Objects;
  * Author: Thina Mzosindiso Nontwabaza (219189153)
  * Date: 11 June 2022
  */
-@Entity
+@Embeddable
 public class Address implements Serializable{
     @NotNull private String streetNumber;       //Required
     @NotNull private String streetName;         //Required
     @NotNull private int postalCode;            //Required
     private String unitNumber;                  //Optional
     private String complexName;                 //Optional
-    @Embedded @Id private City city;           //Required
+    @NotNull private City city;           //Required
 
     protected Address(){
 
