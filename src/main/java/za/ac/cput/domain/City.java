@@ -8,7 +8,8 @@ import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Objects;
 
-//@Entity
+@Entity
+@Embeddable
 public class City implements Serializable {
     @NotNull @Id
     private String id;

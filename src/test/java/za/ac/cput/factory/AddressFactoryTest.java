@@ -20,7 +20,7 @@ class AddressFactoryTest {
     public void testAddressWithSuccess(){
         Country country = CountryFactory.build("test-country-id", "test-country-name");
         City city = CityFactory.build("298776287", "Cape Town", country);
-        Address address = AddressFactory.build("12", "Adderley", 8987, new City());
+        Address address = AddressFactory.build("12", "Adderley", 8987, city);
         System.out.println(address);
         assertNotNull(address);
 
