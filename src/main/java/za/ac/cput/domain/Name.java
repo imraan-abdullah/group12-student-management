@@ -40,11 +40,11 @@ public class Name {
         return lastName;
     }
 
-    public void setFirstName(String firstName) {this.firstName = firstName;}
+    private void setFirstName(String firstName) {this.firstName = firstName;}
 
-    public void setMiddleName(String middleName) {this.middleName = middleName;}
+    private void setMiddleName(String middleName) {this.middleName = middleName;}
 
-    public void setLastName(String lastName) {this.lastName = lastName;}
+    private void setLastName(String lastName) {this.lastName = lastName;}
 
 
     @Override

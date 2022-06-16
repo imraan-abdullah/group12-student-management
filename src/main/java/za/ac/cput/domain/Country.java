@@ -7,10 +7,13 @@ import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Objects;
 
-@Embeddable
-public class Country  implements Serializable {
-    @NotNull @Id private String id;
-    @NotNull private String name;
+@Entity
+public class Country   {
+    @NotNull
+    @Id
+    private String id;
+    @NotNull
+    private String name;
 
     protected Country() {
     }
@@ -26,6 +29,27 @@ public class Country  implements Serializable {
 
     public String getName() {
         return name;
+    }
+
+    @Override
+    public String toString() {
+        return "Country{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Country country = (Country) o;
+        return id.equals(country.id) && name.equals(country.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name);
     }
 
     public static class Builder {
@@ -51,25 +75,6 @@ public class Country  implements Serializable {
             return new Country(this);
         }
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Country country = (Country) o;
-        return id.equals(country.id) && name.equals(country.name);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, name);
-    }
-
-    @Override
-    public String toString() {
-        return "Country{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                '}';
-    }
 }
+
+
