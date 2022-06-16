@@ -8,7 +8,7 @@ import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Objects;
 
-@Entity
+//@Entity
 public class City implements Serializable {
     @NotNull @Id
     private String id;
@@ -17,7 +17,7 @@ public class City implements Serializable {
     @Embedded
     private Country country;
 
-    public City() {
+    protected City() {
     }
 
     public City(Builder builder) {
@@ -36,6 +36,28 @@ public class City implements Serializable {
 
     public Country getCountry() {
         return country;
+    }
+
+    @Override
+    public String toString() {
+        return "City{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", country=" + country +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        City city = (City) o;
+        return id.equals(city.id) && name.equals(city.name) && country.equals(city.country);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, country);
     }
 
     public static class Builder {
@@ -68,25 +90,4 @@ public class City implements Serializable {
         }
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        City city = (City) o;
-        return id.equals(city.id) && name.equals(city.name) && country.equals(city.country);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, name, country);
-    }
-
-    @Override
-    public String toString() {
-        return "City{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", country=" + country +
-                '}';
-    }
 }
