@@ -10,13 +10,13 @@ import java.util.Objects;
  * Date: 11 June 2022
  */
 @Entity
-public class Address {
+public class Address implements Serializable{
     @NotNull private String streetNumber;       //Required
     @NotNull private String streetName;         //Required
     @NotNull private int postalCode;            //Required
     private String unitNumber;                  //Optional
     private String complexName;                 //Optional
-    @ManyToOne @Id private City city;           //Required
+    @Embedded @Id private City city;           //Required
 
     protected Address(){
 
