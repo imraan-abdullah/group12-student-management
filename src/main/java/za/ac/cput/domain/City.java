@@ -9,7 +9,7 @@ import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
-@Embeddable
+//@Embeddable
 public class City implements Serializable {
     @NotNull @Id
     private String id;

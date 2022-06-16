@@ -1,4 +1,4 @@
-package za.ac.cput.service;
+package za.ac.cput.service.impl;
 //Mariam Gallie- 219094837
 // CountryServiceImplTest.java (service test package)
 // 13 June 2022
@@ -8,6 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.test.context.SpringBootTest;
 import za.ac.cput.domain.Country;
 import za.ac.cput.factory.CountryFactory;
+import za.ac.cput.service.ICountryService;
 
 import java.util.List;
 import java.util.Optional;
