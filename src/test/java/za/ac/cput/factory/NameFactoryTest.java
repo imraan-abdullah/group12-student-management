@@ -21,9 +21,8 @@ class NameFactoryTest {
     public void buildWithError(){
         Exception exception = assertThrows(IllegalArgumentException.class, () -> NameFactory
                 .build(null,"Rose","Gallie"));
-
-        String excptionMessage = exception.getMessage();
-        assertSame("must have first name ",excptionMessage);
+        System.out.println(exception.getMessage());
+        assertTrue(exception.getMessage().contains("firstName"));
 
     }
 

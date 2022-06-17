@@ -13,6 +13,7 @@ public class EmployeeFactory {
     public static Employee build(String staffId, String email, Name name) {
         StringHelper.checkStringParam("staffId", staffId);
         StringHelper.checkStringParam("email", email);
+        StringHelper.checkEmailValidation(email);
         //StringHelper.checkStringParam("name", name);
         //StringHelper.isEmptyOrNull(name);
         StringHelper.checkId(staffId);

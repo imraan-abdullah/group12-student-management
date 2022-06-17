@@ -1,10 +1,12 @@
 package za.ac.cput.service.impl;
 
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import za.ac.cput.domain.Employee;
+import za.ac.cput.domain.Name;
 import za.ac.cput.factory.EmployeeFactory;
+import za.ac.cput.factory.NameFactory;
 import za.ac.cput.service.IEmployeeService;
 
 import java.util.List;
@@ -12,8 +14,12 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class EmployeeServiceTest {
-    private final Employee employee = EmployeeFactory.build("4367283","sup@gmail.com,", null);
+@SpringBootTest
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+
+class EmployeeServiceImplTest {
+    private final Name name = NameFactory.build("Imraan", "joe", "Abdullah");
+    private final Employee employee = EmployeeFactory.build("4367283","sup@gmail.com", name);
     @Autowired
     private IEmployeeService service;
 
@@ -41,7 +47,7 @@ class EmployeeServiceTest {
 
     @Order(4)
     @Test void delete(){
-        this.service.delete(this.employee);
+        this.service.deleteById(this.employee.getStaffId());
         List<Employee> countryList = this.service.findAll();
         assertEquals(0, countryList.size());
     }

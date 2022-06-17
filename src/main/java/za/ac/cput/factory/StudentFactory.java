@@ -13,6 +13,7 @@ public class StudentFactory {
     public static Student build(String studentId, String email, Name name){
         StringHelper.checkStringParam("studentId", studentId);
         StringHelper.checkStringParam("email", email);
+        StringHelper.checkEmailValidation(email);
         //StringHelper.checkStringParam("name", name);
         StringHelper.checkId(studentId);
         return new Student.Builder().setStudentId(studentId)

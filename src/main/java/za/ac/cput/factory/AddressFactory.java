@@ -16,6 +16,7 @@ public class AddressFactory {
         StringHelper.checkStringParam("complexName", streetName);
         StringHelper.checkStringParam("streetNumber", streetName);
         StringHelper.checkStringParam("streetName", streetName);
+        StringHelper.checkPostalCode(postalCode);
         StringHelper.setEmptyIfNull("");
 
         return new Address.Builder().setStreetNumber(streetNumber)

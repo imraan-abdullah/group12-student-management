@@ -44,7 +44,7 @@ class EmployeeAddressServiceImplTest {
         );
     }
 
-    @Disabled
+    @Order(4)
     @Test
     void delete() {
         this.employeeAddressService.deleteById(this.employeeAddress.getStaffId());
