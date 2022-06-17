@@ -6,6 +6,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import za.ac.cput.domain.*;
+import za.ac.cput.factory.StudentAddressFactory;
+import za.ac.cput.factory.StudentFactory;
 import za.ac.cput.service.IStudentAddressService;
 
 import javax.validation.Valid;
@@ -19,27 +21,34 @@ import java.util.List;
  */
 
 @RestController
-@RequestMapping("school-management/studentaddress/")
+@RequestMapping("school-management/student-address/")
 @Slf4j
 public class StudentAddressController {
     private IStudentAddressService studentAddressService;
 
     @Autowired
-    public StudentAddressController(IStudentAddressService studAddress){
-        this.studentAddressService = studAddress;
+    public StudentAddressController(IStudentAddressService iStudentAddressService){
+        this.studentAddressService = iStudentAddressService;
     }
 
     @PostMapping("save")
     public ResponseEntity<StudentAddress> save(@Valid @RequestBody StudentAddress studentAddress){
-        log.info("Save request as: {}", studentAddress);
-        StudentAddress save = studentAddressService.save(studentAddress);
+        log.info("Save request:{}", studentAddress);
+        StudentAddress studentAddressVal;
+        try {
+            studentAddressVal = StudentAddressFactory.build(studentAddress.getStudentId(), studentAddress.getAddress());
+        }
+        catch (IllegalArgumentException e){
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        }
+        StudentAddress save = studentAddressService.save(studentAddressVal);
         return ResponseEntity.ok(save);
     }
 
-    @GetMapping("read/{id}")
-    public ResponseEntity<StudentAddress> read(@PathVariable String id){
-        log.info("Read request: {}", id);
-        StudentAddress studentAddress = this.studentAddressService.read(id)
+    @GetMapping("read/{studentId}")
+    public ResponseEntity<StudentAddress> read(@PathVariable String studentId){
+        log.info("Read request:{}", studentId);
+        StudentAddress studentAddress = this.studentAddressService.read(studentId)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
         return ResponseEntity.ok(studentAddress);
     }

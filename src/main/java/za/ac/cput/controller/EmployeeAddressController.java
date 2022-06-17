@@ -16,21 +16,20 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("school-management/employeeAddress")
+@RequestMapping("school-management/employee-address")
 @Slf4j
 public class EmployeeAddressController {
-
-    private final IEmployeeAddressService iEmployeeAddressService;
+    private IEmployeeAddressService employeeAddressService;
 
     @Autowired
     public EmployeeAddressController(IEmployeeAddressService iEmployeeAddressService){
-        this.iEmployeeAddressService = iEmployeeAddressService;
+        this.employeeAddressService = iEmployeeAddressService;
     }
 
 
     @PostMapping("save")
     public ResponseEntity<EmployeeAddress> save(@Valid @RequestBody EmployeeAddress employeeAddress){
-        log.info("save request:{}",employeeAddress);
+        log.info("Save request:{}", employeeAddress);
         EmployeeAddress valEmployeeAddress;
         try {
             valEmployeeAddress = EmployeeAddressFactory.build(employeeAddress.getStaffId(), employeeAddress.getAddress());
@@ -38,14 +37,14 @@ public class EmployeeAddressController {
         catch (IllegalArgumentException e){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
-        EmployeeAddress save = iEmployeeAddressService.save(valEmployeeAddress);
+        EmployeeAddress save = employeeAddressService.save(valEmployeeAddress);
         return ResponseEntity.ok(save);
     }
 
-    @GetMapping("read/{id}")
+    @GetMapping("read/{staffId}")
     public ResponseEntity<EmployeeAddress> read(@PathVariable String staffId){
-        log.info("Read request:{}",staffId);
-        EmployeeAddress employeeAddress = this.iEmployeeAddressService.read(staffId)
+        log.info("Read request:{}", staffId);
+        EmployeeAddress employeeAddress = this.employeeAddressService.read(staffId)
                 .orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND));
         return ResponseEntity.ok(employeeAddress);
     }
@@ -53,14 +52,14 @@ public class EmployeeAddressController {
     @DeleteMapping("delete/{id}")
     public ResponseEntity<Void>deleteById(@PathVariable String staffId) {
         log.info("Read request:{}", staffId);
-        this.iEmployeeAddressService.deleteById(staffId);
+        this.employeeAddressService.deleteById(staffId);
         return ResponseEntity.noContent().build();
     }
 
     @GetMapping("all")
     public ResponseEntity<List<EmployeeAddress>>findAll(){
-        List <EmployeeAddress> employeeAddress = this.iEmployeeAddressService.findAll();
-        return ResponseEntity.ok(employeeAddress);
+        List <EmployeeAddress> employeeAddressList = this.employeeAddressService.findAll();
+        return ResponseEntity.ok(employeeAddressList);
 
     }
 

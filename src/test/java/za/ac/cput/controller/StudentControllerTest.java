@@ -12,7 +12,9 @@ import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import za.ac.cput.domain.Name;
 import za.ac.cput.domain.Student;
+import za.ac.cput.factory.NameFactory;
 import za.ac.cput.factory.StudentFactory;
 
 import java.util.Arrays;
@@ -32,15 +34,17 @@ class StudentControllerTest {
     @Autowired
     private TestRestTemplate restTemplate;
 
+    private Name name;
     private Student student;
     private String baseUrl;
 
     @BeforeEach
     void setUp(){
         assertNotNull(controller);
+        this.name = NameFactory.build("first", "middle", "last");
         this.student = StudentFactory
-                .build("3363285", "test@cput.ac.za", student.getName());
-        this.baseUrl = "http:localhost:" + this.port + "/school-management/student/";
+                .build("3363285", "test@cput.ac.za", name);
+        this.baseUrl = "http://localhost:" + this.port + "/school-management/student/";
     }
 
     @Test

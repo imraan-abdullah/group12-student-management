@@ -7,6 +7,7 @@ package za.ac.cput.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import za.ac.cput.domain.City;
 import za.ac.cput.domain.Student;
 import za.ac.cput.repository.IStudentRepository;
 import za.ac.cput.service.IStudentService;
@@ -19,18 +20,31 @@ public class StudentServiceImpl implements IStudentService {
     private final IStudentRepository repository;
 
     @Autowired
-    public StudentServiceImpl(IStudentRepository repository){ this.repository = repository;}
+    public StudentServiceImpl(IStudentRepository repository) {
+        this.repository = repository;}
 
     @Override
-    public Student save(Student student) {return this.repository.save(student);}
+    public Student save(Student student) {
+        return this.repository.save(student);}
 
     @Override
-    public Optional<Student> read(String studentId) {return this.repository.findById(studentId);}
+    public Optional<Student> read(String studentId) {
+        return this.repository.findById(studentId);
+    }
 
     @Override
-    public void delete(Student student) {this.repository.delete(student);}
+    public void delete(Student student) {
+        this.repository.delete(student);}
 
     @Override
-    public List<Student> findAll() {return this.repository.findAll();}
+    public List<Student> findAll() {
+        return this.repository.findAll();}
+
+    @Override
+    public void deleteById(String id) {
+        Optional<Student> student = read(id);
+        if(student.isPresent())
+            delete(student.get());
+    }
 
 }
