@@ -26,8 +26,8 @@ import static org.junit.jupiter.api.Assertions.*;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class StudentServiceImplTest {
 
-    private final Name name = NameFactory.build("", "", "");
-    private final Student student = StudentFactory.build("", "", name);
+    private final Name name = NameFactory.build("name", "middle-name", "last-name");
+    private final Student student = StudentFactory.build("101010", "test@gmail.com", name);
 
     @Autowired private IStudentService service;
 

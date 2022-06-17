@@ -44,8 +44,8 @@ public class EmployeeServiceImpl implements IEmployeeService {
     }
 
     @Override
-    public void deleteById(String staffId) {
-        Optional<Employee> employee = read(staffId);
+    public void deleteById(String id) {
+        Optional<Employee> employee = read(id);
         if(employee.isPresent())
             delete(employee.get());
     }

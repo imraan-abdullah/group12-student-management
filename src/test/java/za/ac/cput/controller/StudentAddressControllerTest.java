@@ -23,18 +23,19 @@ class StudentAddressControllerTest {
     @LocalServerPort
     private int port;
 
+    @Autowired private StudentAddressController controller;
+    @Autowired private TestRestTemplate template;
+
     private Address address;
     private StudentAddress studentAddress;
     private String baseUrl;
-
-    @Autowired private StudentAddressController controller;
-    @Autowired private TestRestTemplate template;
 
     @BeforeEach
     void setUp(){
         assertNotNull(controller);
         Country country = CountryFactory.build("2238765654", "South Africa");
         City city = CityFactory.build("CPT", "Cape Town", country);
+        Address address = AddressFactory.build("5412", "deji", "4561", "red", 9999, city);
         this.studentAddress = StudentAddressFactory.build("298787576", address);
         this.baseUrl="http://localhost:" + this.port + "/school-management/student-address/";
     }
@@ -55,8 +56,8 @@ class StudentAddressControllerTest {
     @Test
     void read() {
         String url = baseUrl + "read/" + this.studentAddress.getStudentId();
+        System.out.println(url);
         ResponseEntity<StudentAddress> response = this.template.getForEntity(url, StudentAddress.class);
-        System.out.println(response);
         assertAll(
                 () -> assertEquals(HttpStatus.OK, response.getStatusCode()),
                 () -> assertNotNull(response.getBody())

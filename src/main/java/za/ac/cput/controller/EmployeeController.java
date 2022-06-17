@@ -29,7 +29,6 @@ public class EmployeeController {
         this.iEmployeeService = iEmployeeService;
     }
 
-    //Imraan
     @PostMapping("save")
     public ResponseEntity<Employee> save(@Valid @RequestBody Employee employee){
         log.info("save request:{}",employee);
@@ -44,7 +43,7 @@ public class EmployeeController {
         return ResponseEntity.ok(save);
     }
 
-    @GetMapping("read/{id}")
+    @GetMapping("read/{staffId}")
     public ResponseEntity<Employee> read(@PathVariable String staffId){
         log.info("Read request:{}",staffId);
         Employee employee = this.iEmployeeService.read(staffId)
