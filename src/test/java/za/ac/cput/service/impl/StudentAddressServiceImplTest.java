@@ -22,7 +22,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class StudentAddressServiceImplTest {
     private Country country = CountryFactory.build("67", "South Africa");
     private City city = CityFactory.build("CPT", "Cape Town", country);
-    private Address address = AddressFactory.build("20","Adderley", 90, city);
+    private Address address = AddressFactory.build("20","Adderley", 9870, city);
     private final StudentAddress studentAddress = StudentAddressFactory.build("237987675", address);
 
     @Autowired

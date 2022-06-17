@@ -21,10 +21,10 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class EmployeeAddressServiceImplTest {
-    private Country country = CountryFactory.build("67", "South Africa");
-    private City city = CityFactory.build("CPT", "Cape Town", country);
-    private Address address = AddressFactory.build("20","Adderley", 90, city);
-    private final EmployeeAddress employeeAddress = EmployeeAddressFactory.build("237987675", address);
+    private Country country = CountryFactory.build("07", "South Africa");
+    private City city = CityFactory.build("DBN", "Durban", country);
+    private Address address = AddressFactory.build("10","Thekwini", 7890, city);
+    private final EmployeeAddress employeeAddress = EmployeeAddressFactory.build("219887675", address);
 
     @Autowired
     private IEmployeeAddressService employeeAddressService;
