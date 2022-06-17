@@ -2,6 +2,7 @@ package za.ac.cput.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import za.ac.cput.domain.EmployeeAddress;
+import za.ac.cput.repository.IEmployeeAddressRepository;
 import za.ac.cput.service.IEmployeeAddressService;
 import java.util.List;
 import java.util.Optional;
@@ -15,10 +16,10 @@ import java.util.Optional;
 
 @Service
 public class EmployeeAddressServiceImpl implements IEmployeeAddressService {
-    private final IEmployeeAddressService repo;
+    private final IEmployeeAddressRepository repo;
 
     @Autowired
-    public EmployeeAddressServiceImpl(IEmployeeAddressService repository){
+    public EmployeeAddressServiceImpl(IEmployeeAddressRepository repository){
         this.repo = repository;
     }
     @Override
@@ -31,6 +32,7 @@ public class EmployeeAddressServiceImpl implements IEmployeeAddressService {
         return this.repo.findById(id);
     }
 
+    @Override
     public void delete(EmployeeAddress EmployeeAddress) {
         repo.delete(EmployeeAddress);
     }

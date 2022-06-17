@@ -1,8 +1,5 @@
 package za.ac.cput.service.impl;
-import org.junit.jupiter.api.MethodOrderer;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import za.ac.cput.domain.*;
@@ -22,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class StudentAddressServiceImplTest {
     private Country country = CountryFactory.build("67", "South Africa");
     private City city = CityFactory.build("CPT", "Cape Town", country);
-    private Address address = AddressFactory.build("20","Adderley", 9870, city);
+    private Address address = AddressFactory.build("2152", "BLueDowns", "2152", "bloekomStreet", 7100, city);
     private final StudentAddress studentAddress = StudentAddressFactory.build("237987675", address);
 
     @Autowired
@@ -46,7 +43,7 @@ class StudentAddressServiceImplTest {
         );
     }
 
-    @Order(3)
+    @Disabled
     @Test
     void delete() {
         this.studentAddressService.deleteById(this.studentAddress.getStudentId());
@@ -54,7 +51,7 @@ class StudentAddressServiceImplTest {
         assertEquals(0, studentAddressList.size());
     }
 
-    @Order(4)
+    @Order(3)
     @Test
     void findAll() {
         List<StudentAddress> studentAddressList = this.studentAddressService.findAll();

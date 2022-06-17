@@ -20,7 +20,7 @@ class AddressFactoryTest {
     public void testAddressWithSuccess(){
         Country country = CountryFactory.build("test-country-id", "test-country-name");
         City city = CityFactory.build("298776287", "Cape Town", country);
-        Address address = AddressFactory.build("12", "Adderley", 8987, city);
+        Address address = AddressFactory.build("1251", "dave", "2142", "hills", 2510, city);
         System.out.println(address);
         assertNotNull(address);
 
@@ -29,7 +29,7 @@ class AddressFactoryTest {
     @Test
     public void testAddressWithError(){
         Exception exception = assertThrows(IllegalArgumentException
-                .class, () -> AddressFactory.build("", "", 0, null));
+                .class, () -> AddressFactory.build("", "", "", "", 210, null));
         System.out.println(exception.getMessage());
         assertTrue(exception.getMessage().contains("streetNumber"));
     }

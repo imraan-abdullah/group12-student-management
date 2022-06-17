@@ -19,7 +19,8 @@ import java.util.Optional;
 public class CityServiceImpl implements ICityService {
     private final ICityRepository repository;
 
-    @Autowired public CityServiceImpl(ICityRepository repository) {
+    @Autowired
+    public CityServiceImpl(ICityRepository repository) {
         this.repository = repository;
     }
 
