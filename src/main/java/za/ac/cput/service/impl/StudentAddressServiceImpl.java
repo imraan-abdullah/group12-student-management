@@ -2,6 +2,7 @@ package za.ac.cput.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import za.ac.cput.domain.StudentAddress;
+import za.ac.cput.repository.IStudentAddressRepository;
 import za.ac.cput.service.IStudentAddressService;
 
 import java.util.List;
@@ -16,10 +17,10 @@ import java.util.Optional;
 
 @Service
 public class StudentAddressServiceImpl implements IStudentAddressService {
-    private final IStudentAddressService repo;
+    private final IStudentAddressRepository repo;
 
     @Autowired
-    public StudentAddressServiceImpl(IStudentAddressService repository){
+    public StudentAddressServiceImpl(IStudentAddressRepository repository){
         this.repo = repository;
     }
 

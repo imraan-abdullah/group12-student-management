@@ -26,7 +26,7 @@ public class City implements Serializable {
 
     @ManyToOne(cascade = {PERSIST, MERGE})
     @NotFound(action = NotFoundAction.IGNORE)
-    private Country country;
+    @NotNull private Country country;
 
     protected City() {
     }

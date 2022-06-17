@@ -1,8 +1,15 @@
 package za.ac.cput.domain;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Objects;
+
+import static javax.persistence.CascadeType.MERGE;
+import static javax.persistence.CascadeType.PERSIST;
+
 /***
  * Address.java
  * Entity for Address
@@ -16,6 +23,8 @@ public class Address implements Serializable{
     @NotNull private int postalCode;            //Required
     private String unitNumber;                  //Optional
     private String complexName;                 //Optional
+    @ManyToOne(cascade = {PERSIST, MERGE})
+    @NotFound(action = NotFoundAction.IGNORE)
     @NotNull private City city;           //Required
 
     protected Address(){
