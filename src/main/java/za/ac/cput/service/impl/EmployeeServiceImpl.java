@@ -7,6 +7,7 @@ package za.ac.cput.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import za.ac.cput.domain.City;
 import za.ac.cput.domain.Employee;
 import za.ac.cput.repository.IEmployeeRepository;
 import za.ac.cput.service.IEmployeeService;
@@ -15,10 +16,10 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class EmployeeService  implements IEmployeeService {
+public class EmployeeServiceImpl implements IEmployeeService {
     private final IEmployeeRepository repository;
 
-    @Autowired public EmployeeService(IEmployeeRepository repository){
+    @Autowired public EmployeeServiceImpl(IEmployeeRepository repository){
         this.repository = repository;
     }
     @Override
@@ -42,8 +43,11 @@ public class EmployeeService  implements IEmployeeService {
         return this.repository.findAll();
     }
 
-    public void delete(String staffId){
-        Optional <Employee> employee = read(staffId);
-        if (employee.isPresent())delete(employee.get());
+    @Override
+    public void deleteById(String staffId) {
+        Optional<Employee> employee = read(staffId);
+        if(employee.isPresent())
+            delete(employee.get());
     }
+
 }

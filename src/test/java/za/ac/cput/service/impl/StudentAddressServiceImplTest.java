@@ -43,7 +43,7 @@ class StudentAddressServiceImplTest {
         );
     }
 
-    @Disabled
+    @Order(4)
     @Test
     void delete() {
         this.studentAddressService.deleteById(this.studentAddress.getStudentId());
