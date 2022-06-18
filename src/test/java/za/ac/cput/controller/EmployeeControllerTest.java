@@ -11,8 +11,11 @@ import za.ac.cput.domain.Employee;
 import za.ac.cput.domain.Name;
 import za.ac.cput.factory.EmployeeFactory;
 import za.ac.cput.factory.NameFactory;
+import za.ac.cput.service.IEmployeeService;
+import za.ac.cput.service.impl.EmployeeServiceImpl;
 
 import java.util.Arrays;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -26,6 +29,7 @@ class EmployeeControllerTest {
     @Autowired private EmployeeController controller;
     @Autowired private TestRestTemplate restTemplate;
 
+    private EmployeeServiceImpl service;
     private Name name;
     private Employee employee;
     private String baseUrl;
@@ -56,6 +60,7 @@ class EmployeeControllerTest {
         String url = baseUrl + "read/" + this.employee.getStaffId();
         System.out.println(url);
         ResponseEntity<Employee> response = this.restTemplate.getForEntity(url, Employee.class);
+        System.out.println(response.toString());
         assertAll(
                 ()-> assertEquals(HttpStatus.OK, response.getStatusCode()),
                 ()-> assertNotNull(response.getBody())
@@ -79,5 +84,18 @@ class EmployeeControllerTest {
                 () -> assertEquals(HttpStatus.OK, response.getStatusCode()),
                 () -> assertEquals(1, response.getBody().length)
         );
+    }
+
+    @Test
+    @Order(5)
+    void findByEmail() {
+        String url = baseUrl + "read-by-email/" + this.employee.getEmail();
+        System.out.println(url);
+        ResponseEntity<Employee> response =
+                this.restTemplate.getForEntity(url, Employee.class);
+        assertAll(
+                () -> assertEquals(HttpStatus.OK, response.getStatusCode())
+        );
+
     }
 }

@@ -50,4 +50,10 @@ public class CityServiceImpl implements ICityService {
         if(city.isPresent())
             delete(city.get());
     }
+
+    // question 7
+    @Override
+    public List<City> findAllCityByCountryId(String countryId) {
+        return this.repository.findAllCityByCountryId(countryId);
+    }
 }

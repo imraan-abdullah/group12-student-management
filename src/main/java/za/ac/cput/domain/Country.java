@@ -13,7 +13,7 @@ import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
-public class Country   {
+public class Country implements Serializable  {
     @NotNull
     @Id
     private String id;

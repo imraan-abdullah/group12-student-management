@@ -12,7 +12,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import za.ac.cput.domain.Employee;
+import za.ac.cput.domain.Name;
 import za.ac.cput.factory.EmployeeFactory;
+import za.ac.cput.helper.StringHelper;
 import za.ac.cput.service.IEmployeeService;
 
 import javax.validation.Valid;
@@ -62,6 +64,19 @@ public class EmployeeController {
     public ResponseEntity<List<Employee>>findAll(){
         List <Employee> employee = this.iEmployeeService.findAll();
         return ResponseEntity.ok(employee);
+    }
 
+    @GetMapping("read-by-email/{email}")
+    public ResponseEntity<Name> findByEmail(@PathVariable String email) {
+        try {
+            StringHelper.checkEmailValidation(email);
+        }
+        catch(IllegalArgumentException iae) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        }
+        Employee employee = this.iEmployeeService.findByEmail(email)
+                .orElseThrow(
+                        ()-> new ResponseStatusException(HttpStatus.NOT_FOUND));
+        return ResponseEntity.ok(employee.getName());
     }
 }

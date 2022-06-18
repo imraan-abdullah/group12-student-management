@@ -68,4 +68,12 @@ public class CityController {
         List <City> city = this.service.findAll();
         return ResponseEntity.ok(city);
     }
+
+    @GetMapping("read-by-countryId/{countryId}")
+    public ResponseEntity<List<City>> findAllCityByCountryId(@PathVariable String countryId) {
+        List<City> city = this.service.findAllCityByCountryId(countryId);
+        if(city.isEmpty())
+            return null;
+        return ResponseEntity.ok(city);
+    }
 }
