@@ -11,11 +11,9 @@ import za.ac.cput.domain.Employee;
 import za.ac.cput.domain.Name;
 import za.ac.cput.factory.EmployeeFactory;
 import za.ac.cput.factory.NameFactory;
-import za.ac.cput.service.IEmployeeService;
 import za.ac.cput.service.impl.EmployeeServiceImpl;
 
 import java.util.Arrays;
-import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -86,6 +84,8 @@ class EmployeeControllerTest {
         );
     }
 
+    //Question 5
+    //Contributed by all
     @Test
     @Order(5)
     void findByEmail() {

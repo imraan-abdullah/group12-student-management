@@ -7,8 +7,8 @@ package za.ac.cput.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import za.ac.cput.domain.City;
 import za.ac.cput.domain.Employee;
+import za.ac.cput.domain.Name;
 import za.ac.cput.repository.IEmployeeRepository;
 import za.ac.cput.service.IEmployeeService;
 
@@ -50,9 +50,17 @@ public class EmployeeServiceImpl implements IEmployeeService {
             delete(employee.get());
     }
 
+    //Question 5
+    //Contributed by all
     @Override
     public Optional<Employee> findByEmail(String email) {
         return this.repository.findByEmail(email);
     }
 
+    //Question 6
+    //All contributed
+//    @Override
+//    public List<Name> findAllEmployeeNameByCityId(String cityId) {
+//        return this.repository.findAllEmployeeNameByCityId(cityId);
+//    }
 }

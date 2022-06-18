@@ -3,10 +3,8 @@ package za.ac.cput.service.impl;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import za.ac.cput.domain.Employee;
-import za.ac.cput.domain.Name;
-import za.ac.cput.factory.EmployeeFactory;
-import za.ac.cput.factory.NameFactory;
+import za.ac.cput.domain.*;
+import za.ac.cput.factory.*;
 import za.ac.cput.service.IEmployeeService;
 
 import java.util.List;
@@ -20,8 +18,13 @@ import static org.junit.jupiter.api.Assertions.*;
 class EmployeeServiceImplTest {
     private final Name name = NameFactory.build("Imraan", "joe", "Abdullah");
     private final Employee employee = EmployeeFactory.build("4367283","sup@gmail.com", name);
+    private final Country country = CountryFactory.build("RSA", "South Africa");
+    private final City city = CityFactory.build("JHZ", "Jozi", country);
+    private final Address address = AddressFactory.build("4785", "jjj", "44", "omo", 4545, city);
+    private final EmployeeAddress employeeAddress = EmployeeAddressFactory.build("4367283", address);
     @Autowired
     private IEmployeeService service;
+
 
     @Order(1)
     @Test
@@ -45,7 +48,7 @@ class EmployeeServiceImplTest {
         );
     }
 
-    @Order(5)
+    @Order(6)
     @Test void delete(){
         this.service.deleteById(this.employee.getStaffId());
         List<Employee> countryList = this.service.findAll();
@@ -59,6 +62,8 @@ class EmployeeServiceImplTest {
         assertEquals(1,employeeList.size());
     }
 
+    //Question 5
+    //Contributed by all
     @Test
     @Order(4)
     void findByEmail() {
@@ -70,6 +75,17 @@ class EmployeeServiceImplTest {
                 ()->assertEquals(this.employee,read.get())
         );
     }
+
+    //Question 6
+    //Contributed by all
+//    @Order(5)
+//    @Test
+//    void findAllNameByCityId() {
+//        List<Name> listOfEmployeeNames = this.service.findAllEmployeeNameByCityId(this.city.getId());
+//        System.out.println(listOfEmployeeNames);
+//        assertEquals(1, listOfEmployeeNames.size());
+//    }
+
 }
 
 

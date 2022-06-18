@@ -52,7 +52,6 @@ public class StudentController {
         return ResponseEntity.ok(student);
     }
 
-
     @DeleteMapping("delete/{id}")
     public ResponseEntity<Void>deleteById(@PathVariable String id ){
         log.info("Read request:{}", id);
