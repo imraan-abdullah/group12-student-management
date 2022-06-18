@@ -4,13 +4,13 @@
 
 ___
 
-###Q10
+### Q10 <br/>
 
 ___
 
-####Flaws in the design of the UML domain
+#### Flaws in the design of the UML domain <br/>
 1.
 ___
 
-####Flaws in the implementation of the domain design
+#### Flaws in the implementation of the domain design <br/>
 1. 
