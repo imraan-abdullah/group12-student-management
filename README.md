@@ -19,3 +19,8 @@ ___
 1. We Believe that it would make more sense for 'Address' to be an entity instead of a complex value object. Making 'Address' an entity and giving it a unique identifier that can be called in the 'StudentAddress' and 'EmployeeAddress' would make for a cleaner database implementation. 
 2. The entities are tightly coupled, meaning that they are dependent on each other which reduces flexibility and its re-usability. The classes should be implemented loosely.
 3. While working with the "Country", "City" and "Address" classes, we were confused because "City" had 2 parent entities and this is something were we were exposed too previously.
+
+___
+
+## Comments
+Group 12 was unable to complete question 6 and was commented out because it was not functional and was causing error to the system as a whole. Due to these issues, we were unable to attempt question 8.
