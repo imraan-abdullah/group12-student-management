@@ -50,4 +50,9 @@ public class EmployeeServiceImpl implements IEmployeeService {
             delete(employee.get());
     }
 
+    @Override
+    public Optional<Employee> findByEmail(String email) {
+        return this.repository.findByEmail(email);
+    }
+
 }

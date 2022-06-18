@@ -45,7 +45,7 @@ class EmployeeServiceImplTest {
         );
     }
 
-    @Order(4)
+    @Order(5)
     @Test void delete(){
         this.service.deleteById(this.employee.getStaffId());
         List<Employee> countryList = this.service.findAll();
@@ -58,4 +58,18 @@ class EmployeeServiceImplTest {
         List<Employee> employeeList = this.service.findAll();
         assertEquals(1,employeeList.size());
     }
+
+    @Test
+    @Order(4)
+    void findByEmail() {
+       String email = this.employee.getEmail();
+        Optional <Employee> read = this.service.findByEmail(employee.getEmail());
+        System.out.println(read);
+        assertAll(
+                ()-> assertTrue(read.isPresent()),
+                ()->assertEquals(this.employee,read.get())
+        );
+    }
 }
+
+
