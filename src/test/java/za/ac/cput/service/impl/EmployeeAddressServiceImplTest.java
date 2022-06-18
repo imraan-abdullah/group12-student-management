@@ -44,7 +44,7 @@ class EmployeeAddressServiceImplTest {
         );
     }
 
-    @Order(4)
+    @Order(5)
     @Test
     void delete() {
         this.employeeAddressService.deleteById(this.employeeAddress.getStaffId());
@@ -58,4 +58,6 @@ class EmployeeAddressServiceImplTest {
         List<EmployeeAddress> employeeAddressList = this.employeeAddressService.findAll();
         assertEquals(1, employeeAddressList.size());
     }
+
+
 }

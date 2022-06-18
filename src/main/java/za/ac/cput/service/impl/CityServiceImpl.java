@@ -8,7 +8,7 @@ package za.ac.cput.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import za.ac.cput.domain.City;
-import za.ac.cput.domain.Country;
+import za.ac.cput.domain.Name;
 import za.ac.cput.repository.ICityRepository;
 import za.ac.cput.service.ICityService;
 
@@ -51,7 +51,8 @@ public class CityServiceImpl implements ICityService {
             delete(city.get());
     }
 
-    // question 7
+    //Question 7
+    //Contributed by all
     @Override
     public List<City> findAllCityByCountryId(String countryId) {
         return this.repository.findAllCityByCountryId(countryId);

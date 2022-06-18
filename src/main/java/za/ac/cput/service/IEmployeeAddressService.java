@@ -1,7 +1,7 @@
 package za.ac.cput.service;
 
 import za.ac.cput.domain.EmployeeAddress;
-import za.ac.cput.domain.StudentAddress;
+import za.ac.cput.domain.Name;
 
 import java.util.List;
 import java.util.Optional;

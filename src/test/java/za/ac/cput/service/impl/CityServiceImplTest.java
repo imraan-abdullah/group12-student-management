@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import za.ac.cput.domain.City;
 import za.ac.cput.domain.Country;
+import za.ac.cput.domain.Name;
 import za.ac.cput.factory.CityFactory;
 import za.ac.cput.factory.CountryFactory;
 import za.ac.cput.service.ICityService;
@@ -55,7 +56,7 @@ class CityServiceImplTest {
         System.out.println(cityList);
         assertEquals(1, cityList.size());
     }
-    @Order(5)
+    @Order(6)
     @Test
     void delete() {
         this.service.delete(this.city);
@@ -72,5 +73,6 @@ class CityServiceImplTest {
         System.out.println(cityListByCountry);
         assertEquals(1, cityListByCountry.size());
     }
+
 
 }
